@@ -1,0 +1,102 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<main>
+
+    <section id="form-container">
+
+        <img id="logo" src="{% static 'images/call_icon.png' %}"/>
+
+        <div id="welcome-message">
+            <br>
+            <h1 class="text-3xl"> <b>Welcome to MyChat</b></h1>
+            <p class="text-xl">A group video calling platform made just for you!</p>
+            <br>
+        </div>
+
+        <form id="form">
+            <div class="field-wrapper">
+
+                <div class="form-field">
+                    <label>Room:</label>
+                    <input id="room-name" name="room" placeholder="Enter a room name..."  style="text-transform:uppercase"/>
+                </div>
+
+                <div class="form-field">
+                    <input id="btn-join" type="submit" value="Join Stream" />
+                </div>
+
+            </div>
+        </form>
+
+    </section>
+</main>
+
+<style>
+    #logo{
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+
+    #form-container{
+    width: 500px;
+    box-shadow:var(--shadow);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+    .form-field{
+        margin-bottom: 20px;
+}
+
+    .form-field label{
+        font-size: 16px;
+        line-height: 1.7em;
+}
+
+    .form-field input{
+        width: 100%;
+        border:2px solid rgba(198,202,219,1);
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+}
+
+    .form-field input[type='submit']{
+        background-color: rgb(75, 93, 172);
+        border:none;
+        color: #fff;
+}
+
+
+</style>
+
+<script type="text/javascript">
+
+
+    let room = document.getElementById('room-name')
+
+
+    let handleSubmit = async (e) => {
+        e.preventDefault()
+        room = room.value
+
+        window.open('stream/','_self')
+    }
+
+    form.addEventListener('submit', handleSubmit)
+
+</script>
+
+{% endblock %}
